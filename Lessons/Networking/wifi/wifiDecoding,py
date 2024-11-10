@@ -1,0 +1,33 @@
+import numpy as np
+import SoapySDR
+from SoapySDR import *  # SoapySDR API
+import time
+
+# Set up SoapySDR HackRF device
+sdr = SoapySDR.Device("driver=hackrf")
+print("Device initialized:", sdr)
+sdr.setSampleRate(SOAPY_SDR_RX, 0, 20e6)  # 20 MHz sample rate for Wi-Fi
+sdr.setFrequency(SOAPY_SDR_RX, 0, 2.412e9)  # 2.412 GHz for Wi-Fi Channel 1
+
+# Set up stream
+rxStream = sdr.setupStream(SOAPY_SDR_RX, SOAPY_SDR_CF32)
+sdr.activateStream(rxStream)
+
+# Buffer for IQ samples
+num_samples = 4096
+buffer = np.array([0]*num_samples, np.complex64)
+
+try:
+    for _ in range(100):  # Capture multiple batches
+        sr = sdr.readStream(rxStream, [buffer], num_samples)
+        if sr.ret > 0:
+            iq_samples = np.array(buffer)  # Raw IQ samples
+            # Process samples here (e.g., decode Wi-Fi frames)
+            print("Captured IQ samples:", iq_samples[:10])  # Print first few samples
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    pass
+finally:
+    sdr.deactivateStream(rxStream)
+    sdr.closeStream(rxStream)
