@@ -66,8 +66,8 @@ class fmRadioFlowGraph(gr.top_block, Qt.QWidget):
         ##################################################
         self.samp_rate = samp_rate = 10e6
         self.channel_width = channel_width = 200e3
-        self.channel_freq = channel_freq = 97.926e6
-        self.center_freq = center_freq = 95e6
+        self.channel_freq = channel_freq = 135e6
+        self.center_freq = center_freq = 138e6
 
         ##################################################
         # Blocks
