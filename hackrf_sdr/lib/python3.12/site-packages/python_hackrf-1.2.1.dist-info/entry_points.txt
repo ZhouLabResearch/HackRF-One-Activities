@@ -1,0 +1,2 @@
+[console_scripts]
+python_hackrf = python_hackrf.__main__:main
