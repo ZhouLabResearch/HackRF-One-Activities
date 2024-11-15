@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 100e6
+    value: 140e6
   states:
     bus_sink: false
     bus_source: false
@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 98.1e6
+    value: 137e6
   states:
     bus_sink: false
     bus_source: false
@@ -135,7 +135,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1192, 344.0]
+    coordinate: [1112, 184.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -699,6 +699,69 @@ blocks:
     coordinate: [512, 496.0]
     rotation: 0
     state: disabled
+- name: qtgui_time_raster_sink_x_0
+  id: qtgui_time_raster_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    grid: 'False'
+    gui_hint: ''
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    mult: '[]'
+    name: '""'
+    ncols: '256'
+    nconnections: '1'
+    nrows: '256'
+    offset: '[]'
+    samp_rate: samp_rate
+    type: byte
+    update_time: '0.10'
+    x_end_value: '0.0'
+    x_label: '""'
+    x_start_value: '0.0'
+    y_end_value: '0.0'
+    y_label: '""'
+    y_start_value: '0.0'
+    zmax: '1'
+    zmin: '-1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1064, 448.0]
+    rotation: 0
+    state: disabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -757,7 +820,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 88.0]
+    coordinate: [848, 96.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -784,6 +847,7 @@ blocks:
 connections:
 - [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
 - [analog_wfm_rcv_0, '0', audio_sink_0, '0']
+- [analog_wfm_rcv_0, '0', qtgui_time_raster_sink_x_0, '0']
 - [blocks_multiply_xx_0, '0', low_pass_filter_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
