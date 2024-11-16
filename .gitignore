@@ -1,0 +1,14 @@
+# Ignore large data files
+frequency_spectrum.npy
+satellite_data.raw
+
+# Ignore all `.log` files
+*.log
+
+# Ignore directories
+/tmp/
+build/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
