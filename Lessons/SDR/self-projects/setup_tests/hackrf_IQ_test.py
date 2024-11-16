@@ -6,9 +6,9 @@ import sys
 
 # Settings for the HackRF
 recording_time = 5  # seconds
-center_freq = 100e6  # Hz
+center_freq = 135e6  # Hz
 sample_rate = 10e6
-baseband_filter = 7.5e6
+baseband_filter = 10.0e6
 lna_gain = 16  # 0 to 40 dB in 8 dB steps
 vga_gain = 20  # 0 to 62 dB in 2 dB steps
 
@@ -101,12 +101,10 @@ plt.imshow(spectrogram, aspect='auto', extent=extent, origin='lower', cmap='viri
 plt.xlabel("Frequency [MHz]")
 plt.ylabel("Time [s]")
 plt.title("Waterfall Plot")
-plt.xscale("log")
+
 plt.colorbar(label="Power [dB]")
 plt.tight_layout()
-import os
-os.makedirs("images", exist_ok=True)
-plt.savefig("images/waterfall_plot.png")
+
 
 # Plot the real and imaginary parts of the collected samples
 plt.figure(figsize=(10, 4))
@@ -115,12 +113,10 @@ plt.plot(np.imag(samples[:10000]), label="Imaginary")
 plt.xlabel("Samples")
 plt.ylabel("Amplitude")
 plt.legend()
-plt.xscale("log")
 plt.title("IQ Values")
-plt.ylim([-1.5, 1.5])
+plt.ylim([-0.5, 0.5])
 plt.tight_layout()
-os.makedirs("images", exist_ok=True)
-plt.savefig("images/iq_values_plot.png")
+
 
 plt.show()
 
